@@ -1,0 +1,14 @@
+{
+  "mode": "dev",
+  "server_dev": {
+    "host": "0.0.0.0",
+    "port": "4000"
+  },
+  "server_prod": {
+    "host": "0.0.0.0",
+    "port": "443",
+    "cert_path": "",
+    "key_path": ""
+  }
+
+}
