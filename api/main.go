@@ -1,7 +1,9 @@
 package main
 
 import (
+	"GDGVIT/seo-suggester/api/middleware"
 	"fmt"
+	"github.com/gorilla/handlers"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 	"net/http"
@@ -40,9 +42,12 @@ func main() {
 
 	conn := host + ":" + port
 
+	mwCors := middleware.CorsEveryWhere(r)
+	mwLogs := handlers.LoggingHandler(os.Stdout, mwCors)
+
 	srv := &http.Server{
 		Addr:    conn,
-		Handler: r,
+		Handler: mwLogs,
 	}
 
 	log.Printf("Starting in %s mode", mode)
